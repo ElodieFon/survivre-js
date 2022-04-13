@@ -1,5 +1,4 @@
 
-
 // =======configuration plateau========== //
 //taille
 let largeurPlateau = 640;
@@ -25,9 +24,6 @@ let minPosY = rayonCercle;
 //déplacement 
 let nombreDePas = 15;
 
-
-
-
 // =========configuration obstacle========== //
 //taille
 let rayonObstacle = 25; 
@@ -52,8 +48,8 @@ function setup() {
     frameRate(30);
  
     // Set the starting position of the shape
-    obstaclePosX = rayonObstacle;
-    obstaclePosY = rayonObstacle;
+    obstaclePosX = largeurPlateau/3;
+    obstaclePosY = hauteurPlateau/2;
 }
 
 function draw() {
