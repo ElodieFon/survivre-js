@@ -53,7 +53,7 @@ function setup() {
  
     // Position de départ de l'obstacle au lancement du jeux
     obstaclePosX = largeurPlateau/3;
-    obstaclePosY = hateurPlateau/2;
+    obstaclePosY = hauteurPlateau/2;
 }
 
 function draw() {
