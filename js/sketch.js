@@ -47,7 +47,7 @@ function setup() {
     noStroke();
     frameRate(30);
  
-    // Set the starting position of the shape
+    // Position de départ de l'obstacle au lancement du jeux
     obstaclePosX = largeurPlateau/3;
     obstaclePosY = hauteurPlateau/2;
 }
