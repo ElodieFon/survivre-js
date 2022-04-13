@@ -54,7 +54,7 @@ function setup() {
 function draw() {
     //mettre une couleur en fond
     background(128);  
-     
+
     // determiner la largeur des traits si dessous
     strokeWeight(2); 
 
@@ -75,17 +75,17 @@ function draw() {
     fill('red');
 
     ellipse(obstaclePosX, obstaclePosY, rayonObstacle, rayonObstacle);
-    //déplacement auto
-    obstaclePosX = obstaclePosX + vitesseObstacleX * directionObstacleX;
-    obstaclePosY = obstaclePosY + vitesseObstacleY * directionObstacleY;
+    //déplacement auto de l'obstacle
+    obstaclePosX = obstaclePosX + vitesseObstacleX * directionObstacleX; //horizontal
+    obstaclePosY = obstaclePosY + vitesseObstacleY * directionObstacleY; //vertical
     //changement de direction de l'obstacle
     if (obstaclePosX > maxPosObstacleX ) { directionObstacleX *= - directionObstacleX;}
            
     if (obstaclePosY > maxPosObstacleY ) { directionObstacleY *= - directionObstacleY;}
 
-    if ( obstaclePosX < 0) {directionObstacleX *= + directionObstacleX;}
+    if ( obstaclePosX < 0 + rayonObstacle) {directionObstacleX *= + directionObstacleX;}
            
-    if (  obstaclePosY < 0 ) {directionObstacleY *= + directionObstacleY;}
+    if (  obstaclePosY < 0 + rayonObstacle ) {directionObstacleY *= + directionObstacleY;}
                    
    //affichage du compteur
     textSize(20);
@@ -210,7 +210,7 @@ function testColision()
 }
 function changementCouleur()
 {
-    if (   posX         < obstaclePosX  + rayonObstacle
+    if (   posX         < obstaclePosX  + rayonObstacle 
         && obstaclePosX < posX          + rayonCercle 
         && posY         < obstaclePosY  + rayonObstacle
         && obstaclePosY < posY          + rayonCercle )
