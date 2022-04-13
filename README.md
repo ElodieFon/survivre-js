@@ -1,6 +1,6 @@
-## survivre-js
+# survivre-js
 
-# objectif :
+## objectif :
 
 . Création d’un jeu à l’aide de P5.js (librairie de Javascript)
 
