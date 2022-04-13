@@ -20,7 +20,7 @@ class Obstacle
         this.positionObstacleY = this.positionObstacleY + this.vitesseObstacle * this.h_v; //vertical
 
         //TODO faire en sorte que l'obstacle ne sorte pas de la map
-        //revoir ce code
+        //revoir ce code (je pense que les dimenssions du plateau ne peuvent pas etre lu comme ça)
         // if (this.positionObstacleX > this.maxPosObstacleX ) { this.h_v *= - this.h_v;}
         // if ( this.positionObstacleX < 0 + this.rayonObstacle) {this.h_v *= + this.h_v;}
         // if (this.positionObstacleY > this.maxPosObstacleY ) { this.h_v *= - obs.h_v;}
