@@ -221,7 +221,5 @@ function changementCouleur()
             compteurImpact = compteurImpact + 1;
 
             console.log(compteurImpact); 
-        } 
- 
-        
+        }       
 }
