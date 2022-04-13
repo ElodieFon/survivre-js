@@ -1,4 +1,4 @@
-# survivre-js
+## survivre-js
 
 objectif :
 
