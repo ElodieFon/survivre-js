@@ -54,17 +54,9 @@ function setup() {
 function draw() {
     //mettre une couleur en fond
     background(128); 
-
-  
-  // Draw the shape
-  
+      
     
-    //timer
-    let m = minute();
-    let s = second();
-    let h = hour();
-
-    text('il est : '+ h + ' heures ' + m +' minutes et '+ s +' secondes',5,450 )
+      
     // determiner la largeur des traits si dessous
     strokeWeight(2); 
 
@@ -106,8 +98,9 @@ function draw() {
    {
        strokeWeight(4);
        textSize(20);   
-
-       text('fin de partie \ntemp écoulé : \n' , largeurPlateau/4 , hauteurPlateau/2); 
+        //timer
+        let millisecond = millis();
+       text('fin de partie \ntemp écoulé : \n'+ Math.trunc(millisecond/1000)+' secondes ' , largeurPlateau/4 , hauteurPlateau/2); 
        releaseTime();//arrete le temp        
    }
 
