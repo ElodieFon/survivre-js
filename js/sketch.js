@@ -51,7 +51,6 @@ function setup() {
     obstaclePosX = largeurPlateau/3;
     obstaclePosY = hauteurPlateau/2;
 }
-
 function draw() {
     //mettre une couleur en fond
     background(128); 
@@ -121,7 +120,6 @@ function draw() {
     testColision();
     
 }
-
 function controleDirection() {
     if (keyIsDown(RIGHT_ARROW)) //fleche droite du clavier
     {
@@ -154,8 +152,8 @@ function controleDirection() {
     //    //console.log ("aucunne flèche appuyé")
     // }
 }
-
-function limitationDeTerrain() {
+function limitationDeTerrain() 
+{
     if (posX < minPosX)//gauche 
     {
         posX = minPosX;// assignation d'une nouvelle valeur
@@ -163,7 +161,7 @@ function limitationDeTerrain() {
         line(0, largeurPlateau, 0, 0);// creation d'une ligne a cette position
         // line(x : point de départ , y : arriver , x2 : point de départ oposé a x , y2 : arriver oposé a y )
 
-        stroke('red'); // changement de couleur des traits 
+        stroke('blue'); // changement de couleur des traits 
 
         console.log("bord gauche toucher")
     }
@@ -174,10 +172,9 @@ function limitationDeTerrain() {
 
         line(largeurPlateau, hauteurPlateau, largeurPlateau, 0);
 
-        stroke('red');
+        stroke('green');
 
         console.log("bord droit toucher")
-
     }
 
     else if (posY < minPosY) //haut 
@@ -186,7 +183,7 @@ function limitationDeTerrain() {
 
         line(0, 0.5, largeurPlateau, 0);
 
-        stroke('red');
+        stroke('yellow');
 
         console.log("bord haut toucher")
     }
@@ -205,10 +202,9 @@ function limitationDeTerrain() {
     else {
         stroke(0, 0, 0)
     }
-
-   
 }
-function testColision() {
+function testColision() 
+{
     strokeWeight(1)
     fill('white');
 
