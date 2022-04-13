@@ -30,10 +30,10 @@ let rayonObstacle = 25;
 //position au démarage du jeu
 let obstaclePosX, obstaclePosY; 
 //vitesse
-let vitesseObstacleX = 10; // Speed of the shape
-let vitesseObstacleY = 10; // Speed of the shape
+let vitesseObstacleX = 10; 
+let vitesseObstacleY = 10; 
 //direction
-let directionObstacleX = 1; // Left or Right
+let directionObstacleX = 1; 
 let directionObstacleY = 1;
 //limitation de la zone de jeu 
 let maxPosObstacleX = largeurPlateau - rayonObstacle;
@@ -53,10 +53,8 @@ function setup() {
 }
 function draw() {
     //mettre une couleur en fond
-    background(128); 
-      
-    
-      
+    background(128);  
+     
     // determiner la largeur des traits si dessous
     strokeWeight(2); 
 
@@ -80,7 +78,7 @@ function draw() {
     //déplacement auto
     obstaclePosX = obstaclePosX + vitesseObstacleX * directionObstacleX;
     obstaclePosY = obstaclePosY + vitesseObstacleY * directionObstacleY;
-    //changement de direction
+    //changement de direction de l'obstacle
     if (obstaclePosX > maxPosObstacleX ) { directionObstacleX *= - directionObstacleX;}
            
     if (obstaclePosY > maxPosObstacleY ) { directionObstacleY *= - directionObstacleY;}
@@ -91,15 +89,16 @@ function draw() {
                    
    //affichage du compteur
     textSize(20);
-    text(compteurImpact,50,50);
+    text(compteurImpact, largeurPlateau/2, hauteurPlateau-50);
 
    //condition d'arret de jeux
    if (compteurImpact >= maxCompteurImpact)
    {
        strokeWeight(4);
-       textSize(20);   
+       textSize(20); 
+       fill('white');  
         //timer
-        let millisecond = millis();
+        let millisecond = millis();      
        text('fin de partie \ntemp écoulé : \n'+ Math.trunc(millisecond/1000)+' secondes ' , largeurPlateau/4 , hauteurPlateau/2); 
        releaseTime();//arrete le temp        
    }
