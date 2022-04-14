@@ -9,8 +9,7 @@ class Obstacle
         this.directionY = 1
         this.rayon = 25
         this.maxPosX = largeurPlateau - this.rayon/2;
-        this.maxPosY = hauteurPlateau - this.rayon/2;
-       
+        this.maxPosY = hauteurPlateau - this.rayon/2;      
     }    
     display()
     {  
@@ -23,7 +22,6 @@ class Obstacle
         this.positionObstacleX = this.positionObstacleX + this.vitesse  * this.directionX ;
         this.positionObstacleY = this.positionObstacleY + this.vitesse  * this.directionY;
     }
-
     limitationDeTerrain()
     { 
         if (this.positionObstacleX > this.maxPosX) this.directionX *= - this.directionX ; 
@@ -103,9 +101,12 @@ let obs ;
 let player ;
 let compteurImpact = 0;
 let maxCompteurImpact = 1;
+let timer = 0 ;
+let millisecond = 0 ;
 
 
 function setup(){
+
     createCanvas(largeurPlateau, hauteurPlateau); 
     noStroke();
     frameRate(30);
@@ -115,9 +116,14 @@ function setup(){
 }
 
 function draw(){
+
     background(128); 
-   
     textSize(20);
+
+    millisecond = millis();
+    timer = Math.trunc(millisecond/1000) ;
+    fill('white')  
+    text(timer,20,20)
 
     text(compteurImpact, largeurPlateau/2, hauteurPlateau-50);
      
@@ -139,16 +145,15 @@ function Colision()
         && obs.positionObstacleX    < player.posX               + player.rayonCercle 
         && player.posY              < obs.positionObstacleY     + obs.rayon
         && obs.positionObstacleY    < player.posY               + player.rayonCercle  )
-        {         
+        {    
+
         compteurImpact = compteurImpact + 1;        
     }   
     if (compteurImpact >= maxCompteurImpact)
         {
             strokeWeight(4);
             textSize(20); 
-            //timer
-            let millisecond = millis();      
-            text('fin de partie \ntemp écoulé : \n'+ Math.trunc(millisecond/1000)+' secondes ' , 100 , 100);                
-            releaseTime();//arrete le temp        
+            text('fin de partie \ntemp écoulé : \n'+ timer +' secondes ' , 100 , 100);                
+            releaseTime();     
         }
 }       
