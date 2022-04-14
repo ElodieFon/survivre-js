@@ -9,3 +9,6 @@
 . Le but du jeu est d’éviter des obstacles qui se déplacent dans l’aire de jeu. 
 
 . Le joueur qui tient le plus longtemps sans être touché gagne ! 
+
+## Lien
+https://elodiefon.github.io/survivre-js/
