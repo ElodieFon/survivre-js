@@ -34,15 +34,15 @@ function setup(){
     createCanvas(largeurPlateau, hauteurPlateau); 
     noStroke();
    
-  bal = new Obstacle();
+  obs = new Obstacle();
 }
 
 function draw(){
     background(128); 
     fill('red') ;   
-    bal.display();
-    bal.bouger();
-    bal.testColision();
+    obs.display();
+    obs.bouger();
+    obs.testColision();
 }
 
 // on définit un classe qui s'appelle "Obstacle"
