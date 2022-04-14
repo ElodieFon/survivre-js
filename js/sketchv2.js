@@ -13,6 +13,7 @@ class Obstacle
     }    
     display()
     {  
+        fill('red') ; 
         ellipse(this.positionObstacleX, this.positionObstacleY, this.rayon , this.rayon); 
     }
 
@@ -22,7 +23,7 @@ class Obstacle
         this.positionObstacleY = this.positionObstacleY + this.vitesse  * this.directionY;
     }
 
-    testColision()
+    limitationDeTerrain()
     { 
         if (this.positionObstacleX > this.maxPosX) this.directionX *= - this.directionX ; 
         else if (this.positionObstacleX < 0 + this.rayon/2) this.directionX *= + this.directionX ;
@@ -45,7 +46,10 @@ class Joueur
         this.nombreDePas = 5
     }
     display()
-    {
+    {       
+        fill('white');
+        stroke('black')
+        strokeWeight(2);
         circle(this.posX, this.posY, this.diametreCercle); 
     }
     bouger() 
@@ -55,33 +59,72 @@ class Joueur
         else if (keyIsDown(DOWN_ARROW)) this.posY = this.posY + this.nombreDePas;
         else if (keyIsDown(UP_ARROW)) this.posY = this.posY - this.nombreDePas;      
     }
+    limitationDeTerrain() 
+    {
+        if (this.posX < this.minPosX)//gauche 
+        {
+            this.posX = this.minPosX;
+            stroke('blue');
+            strokeWeight(4);
+            line(0, largeurPlateau, 0, 0);                   
+        }
+        else if (this.posX > this.maxPosX)//droite 
+        {
+            this.posX = this.maxPosX;
+            stroke('green');
+            strokeWeight(4);
+            line(largeurPlateau, hauteurPlateau, largeurPlateau, 0);  
+            
+        }
+        else if (this.posY < this.minPosY) //haut 
+        {
+            this.posY = this.minPosY;
+            stroke('yellow');
+            strokeWeight(4);
+            line(0, 0.5, largeurPlateau, 0);           
+        }
+        else if (this.posY > this.maxPosY)//bas 
+        {             
+            this.posY = this.maxPosY;
+            stroke('red');
+            strokeWeight(4);             
+            line(0, hauteurPlateau, largeurPlateau, hauteurPlateau);            
+        }
+     
+    }
 }
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 let largeurPlateau = 640;
 let hauteurPlateau = 480;
 let obs ;
 let player ;
+let compteurImpact = 0;
+let maxCompteurImpact = 1;
+
 
 function setup(){
     createCanvas(largeurPlateau, hauteurPlateau); 
     noStroke();
     frameRate(30);
-   
-  obs = new Obstacle();
-  player = new Joueur();
+    
+    obs = new Obstacle();
+    player = new Joueur();
 }
 
 function draw(){
     background(128); 
-    fill('red') ;   
+   
+    textSize(20);
+    text(compteurImpact, largeurPlateau/2, hauteurPlateau-50);
+
     obs.display();
     obs.bouger();
-    obs.testColision();
+    obs.limitationDeTerrain();
 
-    fill('white');
-    stroke('black')
-    strokeWeight(2);
     player.display();
     player.bouger();
+    player.limitationDeTerrain() ;
 }
 
