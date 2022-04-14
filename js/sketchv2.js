@@ -1,8 +1,8 @@
 class Obstacle 
 {
     constructor() {
-        this.positionObstacleX  = largeurPlateau/2
-        this.positionObstacleY  = hauteurPlateau/2
+        this.positionObstacleX  = random(width)
+        this.positionObstacleY  = random(height)
         this.vitesse = 5
         this.directionX = 1
         this.directionY = 1
