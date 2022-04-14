@@ -10,10 +10,11 @@ class Obstacle
         this.rayon = 25
         this.maxPosX = largeurPlateau - this.rayon/2;
         this.maxPosY = hauteurPlateau - this.rayon/2;
+       
     }    
     display()
     {  
-        fill('red') ; 
+        fill('red')
         ellipse(this.positionObstacleX, this.positionObstacleY, this.rayon , this.rayon); 
     }
 
@@ -117,14 +118,37 @@ function draw(){
     background(128); 
    
     textSize(20);
+
     text(compteurImpact, largeurPlateau/2, hauteurPlateau-50);
-
-    obs.display();
-    obs.bouger();
-    obs.limitationDeTerrain();
-
+     
     player.display();
     player.bouger();
     player.limitationDeTerrain() ;
+     
+    obs.display();
+    obs.bouger();
+    obs.limitationDeTerrain();  
+
+    Colision() ;
+ 
 }
 
+function Colision() 
+{
+    if (   player.posX              < obs.positionObstacleX     + obs.rayon
+        && obs.positionObstacleX    < player.posX               + player.rayonCercle 
+        && player.posY              < obs.positionObstacleY     + obs.rayon
+        && obs.positionObstacleY    < player.posY               + player.rayonCercle  )
+        {         
+        compteurImpact = compteurImpact + 1;        
+    }   
+    if (compteurImpact >= maxCompteurImpact)
+        {
+            strokeWeight(4);
+            textSize(20); 
+            //timer
+            let millisecond = millis();      
+            text('fin de partie \ntemp écoulé : \n'+ Math.trunc(millisecond/1000)+' secondes ' , 100 , 100);                
+            releaseTime();//arrete le temp        
+        }
+}       
