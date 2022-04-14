@@ -1,6 +1,7 @@
 class Obstacle 
 {
-    constructor() {
+    constructor() 
+    {
         this.positionObstacleX  = random(width)
         this.positionObstacleY  = random(height)
         this.vitesse = 5
@@ -10,20 +11,23 @@ class Obstacle
         this.maxPosX = largeurPlateau - this.rayon/2;
         this.maxPosY = hauteurPlateau - this.rayon/2;
     }    
-    display = function(){  
+    display()
+    {  
         ellipse(this.positionObstacleX, this.positionObstacleY, this.rayon , this.rayon); 
     }
 
-    bouger = function(){ 
+    bouger()
+    { 
         this.positionObstacleX = this.positionObstacleX + this.vitesse  * this.directionX ;
         this.positionObstacleY = this.positionObstacleY + this.vitesse  * this.directionY;
     }
 
-    testColision = function(){ 
-        if ( this.positionObstacleX > this.maxPosX) this.directionX *= - this.directionX ; 
-        if (this.positionObstacleX < 0 + this.rayon/2) this.directionX *= + this.directionX ;
-        if (this.positionObstacleY > this.maxPosY) this.directionY *= - this.directionY ;
-        if (this.positionObstacleY < 0 + this.rayon/2 ) this.directionY *= + this.directionY ;       
+    testColision()
+    { 
+        if (this.positionObstacleX > this.maxPosX) this.directionX *= - this.directionX ; 
+        else if (this.positionObstacleX < 0 + this.rayon/2) this.directionX *= + this.directionX ;
+        else if (this.positionObstacleY > this.maxPosY) this.directionY *= - this.directionY ;
+        else if (this.positionObstacleY < 0 + this.rayon/2 ) this.directionY *= + this.directionY ;       
     }  
 }
 class Joueur
@@ -46,25 +50,11 @@ class Joueur
     }
     bouger() 
     {
-        if (keyIsDown(RIGHT_ARROW)) //fleche droite du clavier
-        {
-            this.posX = this.posX + this.nombreDePas; //bouger dans la direction demandé
-        }    
-        else if (keyIsDown(LEFT_ARROW)) //fleche gauche du clavier
-        {
-            this.posX = this.posX - this.nombreDePas;
-        }    
-        else if (keyIsDown(DOWN_ARROW)) //fleche bas du clavier
-        {
-            this.posY = this.posY + this.nombreDePas;
-        }
-    
-        else if (keyIsDown(UP_ARROW)) //fleche haut du clavier
-        {
-            this.posY = this.posY - this.nombreDePas;
-        }
+        if (keyIsDown(RIGHT_ARROW)) this.posX = this.posX + this.nombreDePas;
+        else if (keyIsDown(LEFT_ARROW)) this.posX = this.posX - this.nombreDePas;  
+        else if (keyIsDown(DOWN_ARROW)) this.posY = this.posY + this.nombreDePas;
+        else if (keyIsDown(UP_ARROW)) this.posY = this.posY - this.nombreDePas;      
     }
-
 }
 
 let largeurPlateau = 640;
@@ -95,4 +85,3 @@ function draw(){
     player.bouger();
 }
 
-// on définit un classe qui s'appelle "Obstacle"
