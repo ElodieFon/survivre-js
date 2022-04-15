@@ -29,6 +29,24 @@ class Obstacle
         else if (this.positionObstacleY > this.maxPosY) this.directionY *= - this.directionY ;
         else if (this.positionObstacleY < 0 + this.rayon/2 ) this.directionY *= + this.directionY ;       
     }  
+    Colision() 
+    {
+        if (   player.posX              < this.positionObstacleX     + this.rayon
+            && this.positionObstacleX    < player.posX               + player.rayonCercle 
+            && player.posY              < this.positionObstacleY     + this.rayon
+            && this.positionObstacleY    < player.posY               + player.rayonCercle  )
+            {    
+    
+            compteurImpact = compteurImpact + 1;        
+        }   
+        if (compteurImpact >= maxCompteurImpact)
+            {
+                strokeWeight(4);
+                textSize(20); 
+                text('fin de partie \ntemp écoulé : \n'+ timer +' secondes ' , 100 , 100);                
+                releaseTime();     
+            }
+    }  
 }
 class Joueur
 {
@@ -43,11 +61,11 @@ class Joueur
         this.minPosX = this.rayonCercle,
         this.minPosY = this.rayonCercle,
         this.nombreDePas = 5
-    }
+    }    
     display()
     {       
         fill('white');
-        stroke('black')
+        stroke('black');
         strokeWeight(2);
         circle(this.posX, this.posY, this.diametreCercle); 
     }
@@ -91,6 +109,7 @@ class Joueur
         }
      
     }
+  
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -98,6 +117,7 @@ class Joueur
 let largeurPlateau = 640;
 let hauteurPlateau = 480;
 let obs ;
+let obs2 ;
 let player ;
 let compteurImpact = 0;
 let maxCompteurImpact = 1;
@@ -112,6 +132,7 @@ function setup(){
     frameRate(30);
     
     obs = new Obstacle();
+    obs2 = new Obstacle();
     player = new Joueur();
 }
 
@@ -134,26 +155,12 @@ function draw(){
     obs.display();
     obs.bouger();
     obs.limitationDeTerrain();  
+    obs.Colision() ;
 
-    Colision() ;
+    obs2.display();
+    obs2.bouger();
+    obs2.limitationDeTerrain();  
+    obs2.Colision() ;
  
 }
-
-function Colision() 
-{
-    if (   player.posX              < obs.positionObstacleX     + obs.rayon
-        && obs.positionObstacleX    < player.posX               + player.rayonCercle 
-        && player.posY              < obs.positionObstacleY     + obs.rayon
-        && obs.positionObstacleY    < player.posY               + player.rayonCercle  )
-        {    
-
-        compteurImpact = compteurImpact + 1;        
-    }   
-    if (compteurImpact >= maxCompteurImpact)
-        {
-            strokeWeight(4);
-            textSize(20); 
-            text('fin de partie \ntemp écoulé : \n'+ timer +' secondes ' , 100 , 100);                
-            releaseTime();     
-        }
-}       
+  
