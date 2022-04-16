@@ -15,3 +15,5 @@
 . ranger le code : Creer des objets et des class
 
 . creer une fonction qui permer l'apparution d'un nouvelle obstacle toute les secondes
+
+https://github.com/ElodieFon/survivre-js.git
