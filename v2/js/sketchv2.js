@@ -39,16 +39,17 @@ class Obstacle
             && player.posY              < this.positionObstacleY    + this.rayon
             && this.positionObstacleY   < player.posY               + player.rayonCercle  )
         {   
-            compteurImpact = compteurImpact + 1;                 
+            compteurImpact = compteurImpact + 1;   
+            text(compteurImpact, largeurPlateau/2, hauteurPlateau-50);               
         }   
 
-        text(compteurImpact, largeurPlateau/2, hauteurPlateau-50);
+       
 
         if (compteurImpact >= maxCompteurImpact)
             {
                 strokeWeight(4);
                 textSize(20); 
-                text('fin de partie \ntemp écoulé : \n'+ timer +' secondes \npress F5 '  , 100 , 100);                
+                text('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 '  , 100 , 100);                
                 releaseTime();  
                  
             }          
@@ -149,7 +150,7 @@ function draw(){
     millisecond = millis();
     timer = Math.trunc(millisecond/1000) ;
     fill('white')  
-    text(timer,20,20)
+    text(timer+ ' s',20,20)
 
     
      
