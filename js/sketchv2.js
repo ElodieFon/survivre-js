@@ -1,15 +1,13 @@
 // in n'est pa fini pour le moment
 
 class Obstacle 
-{
-    
-
-    
+{   
     constructor() 
     {
         this.positionObstacleX  = random(width)
         this.positionObstacleY  = random(height)
-        this.vitesse = 5
+        this.vitesseX = 10
+        this.vitesseY = 10
         this.directionX = 1
         this.directionY = 1
         this.rayon = 25
@@ -24,8 +22,8 @@ class Obstacle
     }
     bouger()
     { 
-        this.positionObstacleX = this.positionObstacleX + this.vitesse  * this.directionX ;
-        this.positionObstacleY = this.positionObstacleY + this.vitesse  * this.directionY;
+        this.positionObstacleX = this.positionObstacleX + this.vitesseX  * this.directionX ;
+        this.positionObstacleY = this.positionObstacleY + this.vitesseY  * this.directionY;
     }
     limitationDeTerrain()
     { 
@@ -40,9 +38,8 @@ class Obstacle
             && this.positionObstacleX   < player.posX               + player.rayonCercle 
             && player.posY              < this.positionObstacleY    + this.rayon
             && this.positionObstacleY   < player.posY               + player.rayonCercle  )
-            {   
-
-            compteurImpact = compteurImpact + 1;  
+        {   
+            compteurImpact = compteurImpact + 1;                 
         }   
 
         text(compteurImpact, largeurPlateau/2, hauteurPlateau-50);
@@ -52,9 +49,9 @@ class Obstacle
                 strokeWeight(4);
                 textSize(20); 
                 text('fin de partie \ntemp écoulé : \n'+ timer +' secondes ' , 100 , 100);                
-                releaseTime();     
-            }
-            
+                releaseTime();  
+                 
+            }          
     }   
 }
 class Joueur
@@ -69,7 +66,7 @@ class Joueur
         this.maxPosY = hauteurPlateau - this.rayonCercle,
         this.minPosX = this.rayonCercle,
         this.minPosY = this.rayonCercle,
-        this.nombreDePas = 5
+        this.vitesse = 15
     }    
     display()
     {       
@@ -80,10 +77,10 @@ class Joueur
     }
     bouger() 
     {
-        if (keyIsDown(RIGHT_ARROW)) this.posX = this.posX + this.nombreDePas;
-        else if (keyIsDown(LEFT_ARROW)) this.posX = this.posX - this.nombreDePas;  
-        else if (keyIsDown(DOWN_ARROW)) this.posY = this.posY + this.nombreDePas;
-        else if (keyIsDown(UP_ARROW)) this.posY = this.posY - this.nombreDePas;      
+        if (keyIsDown(RIGHT_ARROW)) this.posX = this.posX + this.vitesse;
+        else if (keyIsDown(LEFT_ARROW)) this.posX = this.posX - this.vitesse;  
+        else if (keyIsDown(DOWN_ARROW)) this.posY = this.posY + this.vitesse;
+        else if (keyIsDown(UP_ARROW)) this.posY = this.posY - this.vitesse;      
     }
     limitationDeTerrain() 
     {
@@ -123,11 +120,13 @@ class Joueur
 
 let largeurPlateau = 640;
 let hauteurPlateau = 480;
-let obs ;
 
+let obs ;
 let player ;
+
 let compteurImpact = 0;
 let maxCompteurImpact = 1;
+
 let timer = 0 ;
 let millisecond = 0 ;
 
@@ -138,7 +137,6 @@ function setup(){
     noStroke();
     frameRate(30);
     obs= new Obstacle ;   
-    // obs2 = new Obstacle();
     player = new Joueur();
 }
 
@@ -162,14 +160,12 @@ function draw(){
     obs.display();
     obs.bouger();
     obs.limitationDeTerrain();  
-    obs.Colision() ;
-    
-    // multipleObstacle();
-   
+    obs.Colision() ; 
 }
-// function multipleObstacle() {
-//     for( let i = 0 ; i < timer ; i++) {
-      
-//     }
-// }
+
+// TODO creer une fonction multi obstacle
+
+
+
+
   
