@@ -40,7 +40,8 @@ class Obstacle
             && this.positionObstacleY   < player.posY               + player.rayonCercle  )
         {   
             compteurImpact = compteurImpact + 1;   
-            text(compteurImpact, largeurPlateau/2, hauteurPlateau-50);               
+            text(compteurImpact, largeurPlateau/2, hauteurPlateau-50); 
+                      
         }   
 
        
@@ -53,7 +54,8 @@ class Obstacle
                 releaseTime();  
                  
             }          
-    }   
+    }  
+  
 }
 class Joueur
 {
@@ -121,7 +123,8 @@ class Joueur
 
 let largeurPlateau = 640;
 let hauteurPlateau = 480;
-
+let  obs3 ;
+let obs2 ;
 let obs ;
 let player ;
 
@@ -137,9 +140,13 @@ function setup(){
     createCanvas(largeurPlateau, hauteurPlateau); 
     noStroke();
     frameRate(30);
-    obs= new Obstacle ;   
+    obs= new Obstacle ;  
+    obs2 = new Obstacle ; 
+    obs3 = new Obstacle ; 
+    obs4 = new Obstacle ; 
+    obs5 = new Obstacle ; 
     player = new Joueur();
-    obs2 = new Obstacle ;
+   
 }
 
 function draw(){
@@ -157,16 +164,42 @@ function draw(){
     player.display();
     player.bouger();
     player.limitationDeTerrain() ;
-      
+
     obs.display();
     obs.bouger();
     obs.limitationDeTerrain();  
     obs.Colision() ; 
-
+  
+    if (timer >= 1)
+    { 
     obs2.display();
     obs2.bouger();
-    obs2.limitationDeTerrain();  
+    obs2.limitationDeTerrain();   
     obs2.Colision() ; 
+    }
+    if (timer >= 2)
+    {
+    obs3.display();
+    obs3.bouger();
+    obs3.limitationDeTerrain();   
+    obs3.Colision() ; 
+    }
+    if (timer >= 3 )
+    { 
+    obs4.display();
+    obs4.bouger();
+    obs4.limitationDeTerrain();   
+    obs4.Colision() ; 
+    }
+    if (timer >= 4)
+    {
+    obs5.display();
+    obs5.bouger();
+    obs5.limitationDeTerrain();   
+    obs5.Colision() ; 
+    }
+ 
+  
 }
 
 // TODO creer une fonction multi obstacle automatique synchroniser sur le temp (ex : un nouvelle obstacle par seconde)
