@@ -164,9 +164,8 @@ function draw(){
     obs.limitationDeTerrain();  
     obs.Colision() ;
     
-    multipleObstacle();
+    // multipleObstacle();
    
-
 }
 // function multipleObstacle() {
 //     for( let i = 0 ; i < timer ; i++) {
