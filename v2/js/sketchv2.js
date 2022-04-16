@@ -144,7 +144,7 @@ function setup(){
 
 function draw(){
 
-    background(128); 
+    background('black'); 
     textSize(20);
 
     millisecond = millis();
