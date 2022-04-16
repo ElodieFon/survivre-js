@@ -48,7 +48,7 @@ class Obstacle
             {
                 strokeWeight(4);
                 textSize(20); 
-                text('fin de partie \ntemp écoulé : \n'+ timer +' secondes ' , 100 , 100);                
+                text('fin de partie \ntemp écoulé : \n'+ timer +' secondes \npress F5 '  , 100 , 100);                
                 releaseTime();  
                  
             }          
@@ -138,6 +138,7 @@ function setup(){
     frameRate(30);
     obs= new Obstacle ;   
     player = new Joueur();
+    obs2 = new Obstacle ;
 }
 
 function draw(){
@@ -155,15 +156,19 @@ function draw(){
     player.display();
     player.bouger();
     player.limitationDeTerrain() ;
-    
-    
+      
     obs.display();
     obs.bouger();
     obs.limitationDeTerrain();  
     obs.Colision() ; 
+
+    obs2.display();
+    obs2.bouger();
+    obs2.limitationDeTerrain();  
+    obs2.Colision() ; 
 }
 
-// TODO creer une fonction multi obstacle
+// TODO creer une fonction multi obstacle automatique synchroniser sur le temp (ex : un nouvelle obstacle par seconde)
 
 
 
