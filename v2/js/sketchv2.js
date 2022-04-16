@@ -4,13 +4,13 @@ class Obstacle
 {   
     constructor() 
     {
-        this.positionObstacleX  = random(width)
-        this.positionObstacleY  = random(height)
-        this.vitesseX = 10
-        this.vitesseY = 10
-        this.directionX = 1
-        this.directionY = 1
-        this.rayon = 25
+        this.positionObstacleX  = random(width) ;
+        this.positionObstacleY  = random(height);
+        this.vitesseX = 10;
+        this.vitesseY = 10;
+        this.directionX = 1;
+        this.directionY = 1;
+        this.rayon = 25;
         this.maxPosX = largeurPlateau - this.rayon/2;
         this.maxPosY = hauteurPlateau - this.rayon/2;      
     }    
@@ -44,16 +44,14 @@ class Obstacle
                       
         }   
 
-       
-
         if (compteurImpact >= maxCompteurImpact)
-            {
-                strokeWeight(4);
-                textSize(20); 
-                text('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 '  , 100 , 100);                
-                releaseTime();  
-                 
-            }          
+        {
+            strokeWeight(4);
+            textSize(20); 
+            text('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 '  , 100 , 100);                
+            releaseTime();  
+             
+        }          
     }  
   
 }
@@ -123,9 +121,13 @@ class Joueur
 
 let largeurPlateau = 640;
 let hauteurPlateau = 480;
-let  obs3 ;
-let obs2 ;
+
 let obs ;
+let obs2 ;
+let obs3 ;
+let obs4 ;
+let obs5 ;
+
 let player ;
 
 let compteurImpact = 0;
@@ -134,18 +136,18 @@ let maxCompteurImpact = 1;
 let timer = 0 ;
 let millisecond = 0 ;
 
-
 function setup(){
 
     createCanvas(largeurPlateau, hauteurPlateau); 
     noStroke();
     frameRate(30);
-    obs= new Obstacle ;  
-    obs2 = new Obstacle ; 
-    obs3 = new Obstacle ; 
-    obs4 = new Obstacle ; 
-    obs5 = new Obstacle ; 
-    player = new Joueur();
+    
+    obs = new Obstacle() ;  
+    obs2 = new Obstacle() ; 
+    obs3 = new Obstacle() ; 
+    obs4 = new Obstacle() ; 
+    obs5 = new Obstacle() ; 
+    player = new Joueur() ;
    
 }
 
@@ -158,9 +160,7 @@ function draw(){
     timer = Math.trunc(millisecond/1000) ;
     fill('white')  
     text(timer+ ' s',20,20)
-
-    
-     
+ 
     player.display();
     player.bouger();
     player.limitationDeTerrain() ;
@@ -169,7 +169,6 @@ function draw(){
     obs.bouger();
     obs.limitationDeTerrain();  
     obs.Colision() ; 
-  
     if (timer >= 1)
     { 
     obs2.display();
@@ -198,7 +197,6 @@ function draw(){
     obs5.limitationDeTerrain();   
     obs5.Colision() ; 
     }
- 
   
 }
 
