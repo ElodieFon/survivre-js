@@ -1,5 +1,10 @@
+// in n'est pa fini pour le moment
+
 class Obstacle 
 {
+    
+
+    
     constructor() 
     {
         this.positionObstacleX  = random(width)
@@ -15,8 +20,8 @@ class Obstacle
     {  
         fill('red')
         ellipse(this.positionObstacleX, this.positionObstacleY, this.rayon , this.rayon); 
+        console.log (1)
     }
-
     bouger()
     { 
         this.positionObstacleX = this.positionObstacleX + this.vitesse  * this.directionX ;
@@ -31,14 +36,17 @@ class Obstacle
     }  
     Colision() 
     {
-        if (   player.posX              < this.positionObstacleX     + this.rayon
-            && this.positionObstacleX    < player.posX               + player.rayonCercle 
-            && player.posY              < this.positionObstacleY     + this.rayon
-            && this.positionObstacleY    < player.posY               + player.rayonCercle  )
-            {    
-    
-            compteurImpact = compteurImpact + 1;        
+        if (   player.posX              < this.positionObstacleX    + this.rayon
+            && this.positionObstacleX   < player.posX               + player.rayonCercle 
+            && player.posY              < this.positionObstacleY    + this.rayon
+            && this.positionObstacleY   < player.posY               + player.rayonCercle  )
+            {   
+
+            compteurImpact = compteurImpact + 1;  
         }   
+
+        text(compteurImpact, largeurPlateau/2, hauteurPlateau-50);
+
         if (compteurImpact >= maxCompteurImpact)
             {
                 strokeWeight(4);
@@ -46,7 +54,8 @@ class Obstacle
                 text('fin de partie \ntemp écoulé : \n'+ timer +' secondes ' , 100 , 100);                
                 releaseTime();     
             }
-    }  
+            
+    }   
 }
 class Joueur
 {
@@ -106,10 +115,8 @@ class Joueur
             stroke('red');
             strokeWeight(4);             
             line(0, hauteurPlateau, largeurPlateau, hauteurPlateau);            
-        }
-     
-    }
-  
+        }   
+    } 
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -117,7 +124,7 @@ class Joueur
 let largeurPlateau = 640;
 let hauteurPlateau = 480;
 let obs ;
-let obs2 ;
+
 let player ;
 let compteurImpact = 0;
 let maxCompteurImpact = 1;
@@ -130,9 +137,8 @@ function setup(){
     createCanvas(largeurPlateau, hauteurPlateau); 
     noStroke();
     frameRate(30);
-    
-    obs = new Obstacle();
-    obs2 = new Obstacle();
+    obs= new Obstacle ;   
+    // obs2 = new Obstacle();
     player = new Joueur();
 }
 
@@ -146,21 +152,25 @@ function draw(){
     fill('white')  
     text(timer,20,20)
 
-    text(compteurImpact, largeurPlateau/2, hauteurPlateau-50);
+    
      
     player.display();
     player.bouger();
     player.limitationDeTerrain() ;
-     
+    
+    
     obs.display();
     obs.bouger();
     obs.limitationDeTerrain();  
     obs.Colision() ;
+    
+    multipleObstacle();
+   
 
-    obs2.display();
-    obs2.bouger();
-    obs2.limitationDeTerrain();  
-    obs2.Colision() ;
- 
 }
+// function multipleObstacle() {
+//     for( let i = 0 ; i < timer ; i++) {
+      
+//     }
+// }
   
