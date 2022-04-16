@@ -16,4 +16,4 @@
 
 . creer une fonction qui permer l'apparution d'un nouvelle obstacle toute les secondes
 
-https://github.com/ElodieFon/survivre-js.git
+. https://github.com/ElodieFon/survivre-js.git
