@@ -1,6 +1,6 @@
 # survivre-js
 
-## objectif :
+## objectif v1 :
 
 . Création d’un jeu à l’aide de P5.js (librairie de Javascript)
 
@@ -10,5 +10,8 @@
 
 . Le joueur qui tient le plus longtemps sans être touché gagne ! 
 
-## Lien
-https://elodiefon.github.io/survivre-js/
+## objectif v2 :
+ 
+. ranger le code : Creer des objets et des class
+
+. creer une fonction qui permer l'apparution d'un nouvelle obstacle toute les secondes
