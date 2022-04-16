@@ -10,10 +10,13 @@
 
 . Le joueur qui tient le plus longtemps sans être touché gagne ! 
 
+. https://elodiefon.github.io/survivre-js/v1/
+
 ## objectif v2 :
  
 . ranger le code : Creer des objets et des class
 
 . creer une fonction qui permer l'apparution d'un nouvelle obstacle toute les secondes
 
-. https://github.com/ElodieFon/survivre-js.git
+. https://elodiefon.github.io/survivre-js/v2/
+
