@@ -6,8 +6,8 @@ class Obstacle
     {
         this.positionObstacleX  = random(width) ;
         this.positionObstacleY  = random(height);
-        this.vitesseX = 10;
-        this.vitesseY = 10;
+        this.vitesseX = 5;
+        this.vitesseY = 5;
         this.directionX = 1;
         this.directionY = 1;
         this.rayon = 25;
