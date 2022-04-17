@@ -34,14 +34,15 @@ class Obstacle
     }  
     Colision() 
     {
-        if (   player.posX              < this.positionObstacleX    + this.rayon
-            && this.positionObstacleX   < player.posX               + player.rayonCercle 
+        if (   
+            player.posX              < this.positionObstacleX    + this.rayon
+            && this.positionObstacleX   < player.posX               + player.rayonCercle
             && player.posY              < this.positionObstacleY    + this.rayon
-            && this.positionObstacleY   < player.posY               + player.rayonCercle  )
-        {   
+            && this.positionObstacleY   < player.posY               + player.rayonCercle
+        ) 
+        {                             
             compteurImpact = compteurImpact + 1;   
-            text(compteurImpact, largeurPlateau/2, hauteurPlateau-50); 
-                      
+            text(compteurImpact, largeurPlateau/2, hauteurPlateau-50);                                      
         }   
 
         if (compteurImpact >= maxCompteurImpact)
@@ -61,8 +62,8 @@ class Joueur
     {
         this.diametreCercle = 50,
         this.rayonCercle = this.diametreCercle/2,
-        this.posX = largeurPlateau/2,
-        this.posY = hauteurPlateau/2,
+        this.posX = random(width),
+        this.posY = random(height),
         this.maxPosX = largeurPlateau - this.rayonCercle,
         this.maxPosY = hauteurPlateau - this.rayonCercle,
         this.minPosX = this.rayonCercle,
@@ -70,12 +71,14 @@ class Joueur
         this.vitesse = 15
     }    
     display()
-    {       
+    {  
         fill('white');
+        
         stroke('black');
         strokeWeight(2);
         circle(this.posX, this.posY, this.diametreCercle); 
     }
+
     bouger() 
     {
         if (keyIsDown(RIGHT_ARROW)) this.posX = this.posX + this.vitesse;
@@ -160,7 +163,9 @@ function draw(){
     timer = Math.trunc(millisecond/1000) ;
     fill('white')  
     text(timer+ ' s',20,20)
- 
+
+   
+
     player.display();
     player.bouger();
     player.limitationDeTerrain() ;
