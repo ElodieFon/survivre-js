@@ -25,7 +25,7 @@ class Obstacle
         this.positionObstacleY = this.positionObstacleY + this.vitesseY  * this.directionY;
     }
     limitationDeTerrain()
-    { 
+    { //limite la position de l'obstacle en faisant rebondir la bal sur le "mur"
         if (this.positionObstacleX > this.maxPosX) this.directionX *= - this.directionX ; 
         else if (this.positionObstacleX < 0 + this.rayon/2) this.directionX *= + this.directionX ;
         else if (this.positionObstacleY > this.maxPosY) this.directionY *= - this.directionY ;
@@ -33,7 +33,7 @@ class Obstacle
     }  
     Colision() 
     {
-        if (   
+        if (  //detecte la colision 
             player.posX              < this.positionObstacleX       + this.rayon
             && this.positionObstacleX   < player.posX               + player.rayonCercle
             && player.posY              < this.positionObstacleY    + this.rayon
@@ -42,17 +42,19 @@ class Obstacle
         {    
             //  faire rebondir l'obstacle sur le joueur 
             
-            if (player.posX  <= this.positionObstacleX + this.rayon )this.directionX *= + this.directionX;
-            if (player.posY  <= this.positionObstacleY + this.rayon )this.directionY *= + this.directionY;
-            if (this.positionObstacleX <= player.posX + player.rayonCercle)this.directionX *= - this.directionX;
-            if (this.positionObstacleY <= player.posY + player.rayonCercle)this.directionY *= - this.directionY;
+            if (player.posX  < this.positionObstacleX + this.rayon )this.directionX *= + this.directionX;
+            if (player.posY  < this.positionObstacleY + this.rayon )this.directionY *= + this.directionY;
+            if (this.positionObstacleX < player.posX + player.rayonCercle)this.directionX *= - this.directionX;
+            if (this.positionObstacleY < player.posY + player.rayonCercle)this.directionY *= - this.directionY;
 
+            //ajoute 1 au compteur
             compteurImpact = compteurImpact + 1;                                      
         }   
 
         if (compteurImpact >= maxCompteurImpact)
-        {
-            
+        {          
+            //envoi un message quand le compteur a atteint son niveau max
+
             text('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 '  , 100 , 100);  
 
         // window.alert('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 ') ; 
