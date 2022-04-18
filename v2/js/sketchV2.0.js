@@ -1,4 +1,4 @@
-// in n'est pa fini pour le moment
+// in n'est pas fini pour le moment
 
 class Obstacle 
 {   
@@ -56,8 +56,7 @@ class Obstacle
                   
            alert('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 ') ; 
            //TODO trouver comment reset le jeu
-            
-       
+     
         }     
     }  
   
