@@ -52,8 +52,9 @@ class Obstacle
         if (compteurImpact >= maxCompteurImpact)
         {
             
-            window.alert('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 ') ; 
-            location.reload(true);
+            text('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 '  , 100 , 100);    
+            // window.alert('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 ') ; 
+            // location.reload(true);
 
         // clearRect();
         // clear();
@@ -62,7 +63,7 @@ class Obstacle
         // remove();
         // window.clearInterval()
         
-           //TODO trouver comment reset le jeu sans que ça rame
+           //TODO trouver comment reter et reset le jeu sans que ça rame
      
         }     
     }  
@@ -149,8 +150,9 @@ let player ;
 
 let obs =[];
 
-let nbrObstacle=10;
+let nbrObstacle = 10 ;
 let maxnbrObstacle = 10;
+
 function setup(){
 
     createCanvas(largeurPlateau, hauteurPlateau); 
@@ -165,8 +167,6 @@ function setup(){
       }
     player = new Joueur() ;     
 }
-// TODO trouver comment faire aparaitre chaque objet synchroniser sur le temp (ex : un nouvelle obstacle par seconde)
-
 function draw(){
 
     background('black'); 
@@ -188,8 +188,8 @@ function draw(){
     Obstacle.display();
     Obstacle.bouger();
     Obstacle.limitationDeTerrain();
-     Obstacle.Colision(); 
+    Obstacle.Colision(); 
     });
- 
+ // TODO trouver comment faire aparaitre chaque objet synchroniser sur le temp (ex : un nouvelle obstacle par seconde)
 }
 
