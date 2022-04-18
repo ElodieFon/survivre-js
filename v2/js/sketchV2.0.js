@@ -1,4 +1,4 @@
-// in n'est pas fini pour le moment
+// il n'est pas fini pour le moment
 
 class Obstacle 
 {   
