@@ -54,8 +54,17 @@ class Obstacle
             strokeWeight(4);
             textSize(20); 
                   
-           alert('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 ') ; 
-           //TODO trouver comment reset le jeu
+            window.alert('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 ') ; 
+            location.reload(true);
+
+        // clearRect();
+        // clear();
+        // reset();
+        // removeElements();
+        // remove();
+        // window.clearInterval()
+        
+           //TODO trouver comment reset le jeu sans que ça rame
      
         }     
     }  
@@ -136,7 +145,7 @@ let millisecond ;
 
 
 let compteurImpact = 0;
-let maxCompteurImpact = 1;
+let maxCompteurImpact = 10;
 
 let player ;
 
@@ -156,8 +165,7 @@ function setup(){
         obs
         );
       }
-    player = new Joueur() ;  
-   
+    player = new Joueur() ;     
 }
 // TODO trouver comment faire aparaitre chaque objet synchroniser sur le temp (ex : un nouvelle obstacle par seconde)
 
