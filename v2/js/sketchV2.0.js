@@ -3,9 +3,7 @@
 class Obstacle 
 {   
     constructor() 
-    {
-       
-        
+    {      
         this. positionObstacleX = random(width) , 
         this.positionObstacleY = random(height),
         this.vitesseX = 5;
@@ -36,23 +34,30 @@ class Obstacle
     Colision() 
     {
         if (   
-            player.posX              < this.positionObstacleX    + this.rayon
+            player.posX              < this.positionObstacleX       + this.rayon
             && this.positionObstacleX   < player.posX               + player.rayonCercle
             && player.posY              < this.positionObstacleY    + this.rayon
             && this.positionObstacleY   < player.posY               + player.rayonCercle
         ) 
-        {                             
-            compteurImpact = compteurImpact + 1;   
-            text(compteurImpact, largeurPlateau/2, hauteurPlateau-50);                                      
+        {    
+            //  faire rebondir l'obstacle sur le joueur 
+            if (player.posX < this.positionObstacleX + this.rayon) this.directionX *= + this.directionX ; //droite
+            if (this.positionObstacleX < player.posX + player.rayonCercle) this.directionX *= - this.directionX ;//gauche
+            if (player.posY < this.positionObstacleY + this.rayon) this.directionY *= + this.directionY ;//bas
+            if (this.positionObstacleY < player.posY + player.rayonCercle) this.directionY *= - this.directionY ; //haut
+
+            compteurImpact = compteurImpact + 1;                                      
         }   
 
         if (compteurImpact >= maxCompteurImpact)
         {
             strokeWeight(4);
             textSize(20); 
-            text('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 '  , 100 , 100);                
-            // releaseTime();   
-            clearInterval(interval)   
+                  
+           alert('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 ') ; 
+           //TODO trouver comment reset le jeu
+            
+       
         }     
     }  
   
@@ -125,7 +130,7 @@ class Joueur
 
 let largeurPlateau = 640;
 let hauteurPlateau = 480;
-
+let interval = setInterval(draw, 100);
 
 let timer ;
 let millisecond ; 
@@ -138,14 +143,14 @@ let player ;
 
 let obs =[];
 
-let nbrObstacle = 10;
+let nbrObstacle=10;
 let maxnbrObstacle = 10;
 function setup(){
 
     createCanvas(largeurPlateau, hauteurPlateau); 
     noStroke();
     frameRate(30);
- 
+
     for (let i = 0; i < nbrObstacle; i++) {
         obs[i] = new Obstacle(              
         i,
@@ -153,7 +158,9 @@ function setup(){
         );
       }
     player = new Joueur() ;  
+   
 }
+// TODO trouver comment faire aparaitre chaque objet synchroniser sur le temp (ex : un nouvelle obstacle par seconde)
 
 function draw(){
 
@@ -166,6 +173,8 @@ function draw(){
     fill('white')  
     text(timer+ ' s',20,20)
 
+    text(compteurImpact,largeurPlateau/2,450)
+
     player.display();
     player.bouger();
     player.limitationDeTerrain() ;
@@ -174,9 +183,8 @@ function draw(){
     Obstacle.display();
     Obstacle.bouger();
     Obstacle.limitationDeTerrain();
-    Obstacle.Colision();
+     Obstacle.Colision(); 
     });
-  
+ 
 }
 
-// TODO creer une fonction multi obstacle automatique synchroniser sur le temp (ex : un nouvelle obstacle par seconde)
