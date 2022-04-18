@@ -41,10 +41,11 @@ class Obstacle
         ) 
         {    
             //  faire rebondir l'obstacle sur le joueur 
-            if (player.posX < this.positionObstacleX + this.rayon) this.directionX *= + this.directionX ; //droite
-            if (this.positionObstacleX < player.posX + player.rayonCercle) this.directionX *= - this.directionX ;//gauche
-            if (player.posY < this.positionObstacleY + this.rayon) this.directionY *= + this.directionY ;//bas
-            if (this.positionObstacleY < player.posY + player.rayonCercle) this.directionY *= - this.directionY ; //haut
+            
+            if (player.posX  <= this.positionObstacleX + this.rayon )this.directionX *= + this.directionX;
+            if (player.posY  <= this.positionObstacleY + this.rayon )this.directionY *= + this.directionY;
+            if (this.positionObstacleX <= player.posX + player.rayonCercle)this.directionX *= - this.directionX;
+            if (this.positionObstacleY <= player.posY + player.rayonCercle)this.directionY *= - this.directionY;
 
             compteurImpact = compteurImpact + 1;                                      
         }   
@@ -52,22 +53,22 @@ class Obstacle
         if (compteurImpact >= maxCompteurImpact)
         {
             
-            text('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 '  , 100 , 100);    
-            // window.alert('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 ') ; 
-            // location.reload(true);
+            text('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 '  , 100 , 100);  
+
+        // window.alert('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 ') ; 
+        // location.reload(true);
 
         // clearRect();
         // clear();
         // reset();
         // removeElements();
         // remove();
-        // window.clearInterval()
+        // window.clearInterval();
         
            //TODO trouver comment reter et reset le jeu sans que ça rame
      
         }     
-    }  
-  
+    }   
 }
 class Joueur
 {
@@ -142,7 +143,6 @@ let interval = setInterval(draw, 100);
 let timer ;
 let millisecond ; 
 
-
 let compteurImpact = 0;
 let maxCompteurImpact = 10;
 
@@ -178,7 +178,7 @@ function draw(){
     fill('white')  
     text(timer+ ' s',20,20)
 
-    text(compteurImpact,largeurPlateau/2,450)
+    text('impact : ' + compteurImpact,largeurPlateau/2,450)
 
     player.display();
     player.bouger();
