@@ -51,9 +51,7 @@ class Obstacle
 
         if (compteurImpact >= maxCompteurImpact)
         {
-            strokeWeight(4);
-            textSize(20); 
-                  
+            
             window.alert('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 ') ; 
             location.reload(true);
 
