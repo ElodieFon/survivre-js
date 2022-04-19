@@ -174,8 +174,11 @@ function aretDeJeu(){
     textSize(20); 
     fill('white');  
     //timer
-    let millisecond = millis();     
-    text('fin de partie \ntemp écoulé : \n'+ Math.trunc(millisecond/1000)+' secondes ' , largeurPlateau/4 , hauteurPlateau/2);     
-    releaseTime();//arrete le temp        
+    let millisecond = millis(); 
+    let timer = Math.trunc(millisecond/1000)  
+    text('fin de partie \ntemp écoulé : \n'+ timer +' secondes ' , largeurPlateau/4 , hauteurPlateau/2);     
+      
+    window.alert('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 ') ; 
+    location.reload(true);     
  }
 }
