@@ -54,11 +54,15 @@ class Obstacle
         if (compteurImpact >= maxCompteurImpact)
         {          
             //envoi un message quand le compteur a atteint son niveau max
+            
 
-            text('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 '  , 100 , 100);  
+            text('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 '  , 100 , 100); 
+            
+            
+            // frameRate(0) //<- ralentit le temp
 
         // window.alert('fin de partie \ntemp écoulé : '+ timer +' secondes \npress F5 ') ; 
-        // location.reload(true);
+        // location.reload(true); //<- ne recharge pas la page
 
         // clearRect();
         // clear();
@@ -142,7 +146,7 @@ let largeurPlateau = 640;
 let hauteurPlateau = 480;
 let interval = setInterval(draw, 100);
 
-let timer ;
+
 let millisecond ; 
 
 let compteurImpact = 0;
@@ -194,4 +198,3 @@ function draw(){
     });
  // TODO trouver comment faire aparaitre chaque objet synchroniser sur le temp (ex : un nouvelle obstacle par seconde)
 }
-
