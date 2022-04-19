@@ -71,7 +71,7 @@ class Obstacle
         // remove();
         // window.clearInterval();
         
-        //TODO trouver comment reter et reset le jeu sans que ça rame
+        //TODO trouver comment areter et reset le jeu sans que ça rame
      
         }     
     }   
